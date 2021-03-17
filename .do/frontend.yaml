@@ -1,0 +1,16 @@
+name: sample-frontend
+services:
+  - build_command: yarn build
+    environment_slug: node-js
+    envs:
+      - key: TEST_ENV
+        scope: RUN_AND_BUILD_TIME
+        value: Test env variabel
+    git:
+      branch: master
+      repo_clone_url: https://github.com/espensgr/do-monorepo-test.git
+    name: sample-nuxtjs
+    routes:
+      - path: /
+    run_command: yarn start
+    source_dir: frontend
