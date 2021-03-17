@@ -23,5 +23,6 @@ services:
       - key: TEST_ENV
         value: "Test env variabel"
     build_command: yarn build
-    run_command: yarn start
+    run_command: yarn start --hostname 0.0.0.0
+    http_port: 3000
     source_dir: frontend
