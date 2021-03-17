@@ -1,12 +1,27 @@
-name: sample-laravel
+name: sample-monorepo
 services:
-  - environment_slug: php
+  - name: sample-laravel
+    routes:
+      - path: /app
+    environment_slug: php
     git:
       branch: master
       repo_clone_url: https://github.com/espensgr/do-monorepo-test.git
     envs:
       - key: APP_KEY
         value: "base64:UdAH2B63rlotjrkSSsj3Hppy4gbfr+OeHvtSdF9r9q8="
-    name: sample-laravel
     source_dir: laravel
     run_command: heroku-php-apache2 public/
+  - name: sample-nuxtjs
+    routes:
+      - path: /
+    environment_slug: node-js
+    git:
+      branch: master
+      repo_clone_url: https://github.com/espensgr/do-monorepo-test.git
+    envs:
+      - key: TEST_ENV
+        value: "Test env variabel"
+    build_command: yarn install
+    run_command: yarn start
+    source_dir: frontend
